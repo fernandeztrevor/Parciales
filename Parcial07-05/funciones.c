@@ -18,7 +18,6 @@ int devolverHorasEstadia()
 
 };
 
-
 void imprimirMenu()
 {
     printf("\n1. Alta de propietario\n2. Modificacion de propietario\n3. Baja de propietario\n4. Ingreso de automovil\n5. Egreso de automovil\n6. Recaudacion total del estacionamiento\n7. Recaudacion total por marca\n8.Buscar propietario por ID\n9.Datos de los propietarios de autos AUDI\n10. Listado de autos con usuarios ordenados por patente\n99. Salir\n");
@@ -74,7 +73,7 @@ int alfanumerico(char str[])
     int i=0;
     while(str[i] != '\0')
     {
-        if((str[i] != ' ') && (str[i] < 'a' || str[i] > 'z') && (str[i] < 'A' || str[i] > 'Z') && (str[i] < '0' || str[i] > '9'))
+        if((str[i] != '-') && (str[i] != ' ') && (str[i] < 'a' || str[i] > 'z') && (str[i] < 'A' || str[i] > 'Z') && (str[i] < '0' || str[i] > '9'))
             return 0;
         i++;
     }
@@ -128,7 +127,7 @@ int imprimirListaIngresos(Propietarios listaPersonas[], Ingresos listaIngresos[]
                                 {
                                   printf("\nId      Patente      Marca      ID Propietario\n");
                                 }
-                                printf("%d      %s      %d      %d\n", listaIngresos[i].id, listaIngresos[i].patente, listaIngresos[i].marca, listaPersonas[i].id);
+                                printf("%d      %s      %s      %d\n", listaIngresos[i].id, listaIngresos[i].patente, listaIngresos[i].marca, listaPersonas[i].id);
                                 j++;
                         }
                     }

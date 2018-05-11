@@ -36,11 +36,56 @@ int main()
     inicializar(listaPersonas, cantidad, valor);
     inicializarIngresos(listaIngresos, cantidad, valor);
 
+    //strcpy(auxiliarNombre,MARCA1);
+   // listaIngresos[1].marca=MARCA1;
+    //printf("%s", listaIngresos[1].marca);
+
+    //printf("%s", auxiliarNombre);
     //Harcodeo personas
 
     for(int i=1; i<5; i++)
     {
         switch (i)
+            {
+               case 1:
+                   listaPersonas[i].id=i;
+                   strcpy(listaPersonas[i].nombre,"Juan");
+                   strcpy(listaPersonas[i].tarjeta,"111-111");
+                   strcpy(listaPersonas[i].direccion,"Mitre");
+                   break;
+                case 2:
+                   listaPersonas[i].id = i;
+                   strcpy(listaPersonas[i].nombre,"Luis");
+                   strcpy(listaPersonas[i].tarjeta,"222-222");
+                   strcpy(listaPersonas[i].direccion,"Urquiza");
+                   break;
+                case 3:
+                   listaPersonas[i].id=i;
+                   strcpy(listaPersonas[i].nombre,"Maria");
+                   strcpy(listaPersonas[i].tarjeta,"333-333");
+                   strcpy(listaPersonas[i].direccion,"Belgrano");
+                   break;
+                case 4:
+                   listaPersonas[i].id=i;
+                   strcpy(listaPersonas[i].nombre,"Jose");
+                   strcpy(listaPersonas[i].tarjeta,"444-444");
+                   strcpy(listaPersonas[i].direccion,"Alsina");
+                   break;
+            }
+    }
+
+
+            int id[10]= {1,2,3,4,5,6,7,8,9,10};
+            char patente[20][10]= {"AAA","CCC","DDD","BBB","ZZZ","III","HHH","EEE","FFF","GGG"};
+            int marca[10]= {1,3,3,2,2,3,3,4,3,1};
+            int propietario[10]= {2,1,2,1,3,3,4,1,4,3};
+
+      /*  for(int i=1; i<10; i++)
+    {   listaIngresos[i].id=id[i];
+        strcpy(listaIngresos[i].patente, patente[i]);
+        strcpy(listaIngresos[i].marca, marca[i]);
+        listaIngresos[i].propietario=propietario[i];
+         switch (i)
             {
                case 1:
                    listaPersonas[i].id=1;
@@ -66,8 +111,8 @@ int main()
                    strcpy(listaPersonas[i].tarjeta,"444-444");
                    strcpy(listaPersonas[i].direccion,"Alsina");
                    break;
-            }
-    }
+
+    }*/
 
 
     do
@@ -180,18 +225,31 @@ int main()
                             scanf("%d", &i);
                         }
         printf("Ingrese el ID del propietario: ");
+        imprimirListaPropietarios(listaPersonas, cantidad, j, valor);
         scanf("%d", &j);
 
+        listaIngresos[espacioLibre].propietario=j;
 
-
-        for(k=0; k<20; k++)
+        /*for(k=0; k<20; k++)
         {
-         if( j == listaPersonas[k].id)
+
+            printf("hasta aca esta bien");
+        printf("j=%d", j);
+        printf("k=%d", k);
+
+        */
+         //if( j == listaPersonas[k].id)
+            //listaPersonas[j].id;
+
          {
            strcpy(listaIngresos[espacioLibre].patente, auxiliarPatente);
+
+           //printf("i=%d", i);
+
         switch (i)
             {
                 case 1:
+                        //
                         listaIngresos[espacioLibre].marca=MARCA1;
                         break;
                 case 2:
@@ -204,8 +262,12 @@ int main()
                         listaIngresos[espacioLibre].marca=MARCA4;
                         break;
             }
-         }
+         //}
+
          listaIngresos[espacioLibre].id=espacioLibre;
+         printf("hasta aca esta bien");
+
+         imprimirListaIngresos(listaPersonas, listaIngresos, cantidad, j, valor);
         }}break;
 
     case 5:
