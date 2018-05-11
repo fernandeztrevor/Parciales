@@ -1,0 +1,40 @@
+#ifndef FUNCIONES_H_INCLUDED
+#define FUNCIONES_H_INCLUDED
+
+
+typedef struct{
+    int id;//= {1,2,3,4};
+    char nombre[20];//= {"Juan","Luis","Maria","Jose"};
+    char tarjeta[20];//= {"111-111","222-222","333-333","444-444"};
+    char direccion[20];//= {"mitre","urquiza","belgrano","alsina"};
+}Propietarios;
+
+typedef struct{
+    int id;//= {1,2,3,4,5,6,7,8,9,10};
+    char patente[20];//= {"AAA","CCC","DDD","BBB","ZZZ","III","HHH","EEE","FFF","GGG"};
+    int marca;//= {1,3,3,2,2,3,3,4,3,1};
+    int propietario;//= {2,1,2,1,3,3,4,1,4,3};
+}Ingresos;
+
+typedef struct{
+int marca;//= {1,1,2,3,2,2,3,4,1,1};
+    float importe;//= {100,200,100,300,100,100,200,200,100,100};
+}Egresos;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#endif
