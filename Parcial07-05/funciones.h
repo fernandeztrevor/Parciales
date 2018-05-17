@@ -17,7 +17,7 @@ typedef struct{
 }Ingresos;
 
 typedef struct{
-int marca;//= {1,1,2,3,2,2,3,4,1,1};
+    int marca;//= {1,1,2,3,2,2,3,4,1,1};
     float importe;//= {100,200,100,300,100,100,200,200,100,100};
 }Egresos;
 

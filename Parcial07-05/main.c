@@ -35,91 +35,13 @@ int main()
 
     inicializar(listaPersonas, cantidad, valor);
     inicializarIngresos(listaIngresos, cantidad, valor);
-
-    //strcpy(auxiliarNombre,MARCA1);
-   // listaIngresos[1].marca=MARCA1;
-    //printf("%s", listaIngresos[1].marca);
-
-    //printf("%s", auxiliarNombre);
-    //Harcodeo personas
-
-    for(int i=1; i<5; i++)
-    {
-        switch (i)
-            {
-               case 1:
-                   listaPersonas[i].id=i;
-                   strcpy(listaPersonas[i].nombre,"Juan");
-                   strcpy(listaPersonas[i].tarjeta,"111-111");
-                   strcpy(listaPersonas[i].direccion,"Mitre");
-                   break;
-                case 2:
-                   listaPersonas[i].id = i;
-                   strcpy(listaPersonas[i].nombre,"Luis");
-                   strcpy(listaPersonas[i].tarjeta,"222-222");
-                   strcpy(listaPersonas[i].direccion,"Urquiza");
-                   break;
-                case 3:
-                   listaPersonas[i].id=i;
-                   strcpy(listaPersonas[i].nombre,"Maria");
-                   strcpy(listaPersonas[i].tarjeta,"333-333");
-                   strcpy(listaPersonas[i].direccion,"Belgrano");
-                   break;
-                case 4:
-                   listaPersonas[i].id=i;
-                   strcpy(listaPersonas[i].nombre,"Jose");
-                   strcpy(listaPersonas[i].tarjeta,"444-444");
-                   strcpy(listaPersonas[i].direccion,"Alsina");
-                   break;
-            }
-    }
-
-
-            int id[10]= {1,2,3,4,5,6,7,8,9,10};
-            char patente[20][10]= {"AAA","CCC","DDD","BBB","ZZZ","III","HHH","EEE","FFF","GGG"};
-            int marca[10]= {1,3,3,2,2,3,3,4,3,1};
-            int propietario[10]= {2,1,2,1,3,3,4,1,4,3};
-
-      /*  for(int i=1; i<10; i++)
-    {   listaIngresos[i].id=id[i];
-        strcpy(listaIngresos[i].patente, patente[i]);
-        strcpy(listaIngresos[i].marca, marca[i]);
-        listaIngresos[i].propietario=propietario[i];
-         switch (i)
-            {
-               case 1:
-                   listaPersonas[i].id=1;
-                   strcpy(listaPersonas[i].nombre,"Juan");
-                   strcpy(listaPersonas[i].tarjeta,"111-111");
-                   strcpy(listaPersonas[i].direccion,"Mitre");
-                   break;
-                case 2:
-                   listaPersonas[i].id = 2;
-                   strcpy(listaPersonas[i].nombre,"Luis");
-                   strcpy(listaPersonas[i].tarjeta,"222-222");
-                   strcpy(listaPersonas[i].direccion,"Urquiza");
-                   break;
-                case 3:
-                   listaPersonas[i].id=3;
-                   strcpy(listaPersonas[i].nombre,"Maria");
-                   strcpy(listaPersonas[i].tarjeta,"333-333");
-                   strcpy(listaPersonas[i].direccion,"Belgrano");
-                   break;
-                case 4:
-                   listaPersonas[i].id=4;
-                   strcpy(listaPersonas[i].nombre,"Jose");
-                   strcpy(listaPersonas[i].tarjeta,"444-444");
-                   strcpy(listaPersonas[i].direccion,"Alsina");
-                   break;
-
-    }*/
-
+    hardcode(listaPersonas);
+    hardcodeIngresos(listaIngresos);
 
     do
     {
-            imprimirMenu();
-            scanf("%d", &opcion);
-
+        imprimirMenu();
+        scanf("%d", &opcion);
         switch(opcion)
         {
     case 1:
@@ -211,14 +133,14 @@ int main()
         else{
         printf("\nIngrese la patente del auto ingresado: \n");
         fflush(stdin);
-        gets(auxiliarPatente);
+        gets(auxiliarPatente);//tomo patente
         while (alfanumerico(auxiliarPatente)!=1)
                         {
                             printf("\nLa patente solo puede contener numeros y letras, reingrese:\n");
                             gets(auxiliarPatente);
                         }
         printf("Seleccione la marca del vehiculo:\n1.ALPHA_ROMEO\n2.FERRARI\n3.AUDI\n4.OTROS\n");
-        scanf("%d", &i);
+        scanf("%d", &i);//tomo marca
         while(i<1 || i>4)
                         {
                             printf("Error. Seleccione la marca del vehiculo:\n1.ALPHA_ROMEO\n2.FERRARI\n3.AUDI\n4.OTROS\n");
@@ -226,30 +148,14 @@ int main()
                         }
         printf("Ingrese el ID del propietario: ");
         imprimirListaPropietarios(listaPersonas, cantidad, j, valor);
-        scanf("%d", &j);
+        scanf("%d", &k);//tomo propietario
+        listaIngresos[espacioLibre].propietario=listaPersonas[k].id;
 
-        listaIngresos[espacioLibre].propietario=j;
-
-        /*for(k=0; k<20; k++)
-        {
-
-            printf("hasta aca esta bien");
-        printf("j=%d", j);
-        printf("k=%d", k);
-
-        */
-         //if( j == listaPersonas[k].id)
-            //listaPersonas[j].id;
-
-         {
-           strcpy(listaIngresos[espacioLibre].patente, auxiliarPatente);
-
-           //printf("i=%d", i);
+        strcpy(listaIngresos[espacioLibre].patente, auxiliarPatente);
 
         switch (i)
             {
                 case 1:
-                        //
                         listaIngresos[espacioLibre].marca=MARCA1;
                         break;
                 case 2:
@@ -262,17 +168,15 @@ int main()
                         listaIngresos[espacioLibre].marca=MARCA4;
                         break;
             }
-         //}
+
 
          listaIngresos[espacioLibre].id=espacioLibre;
-         printf("hasta aca esta bien");
-
-         imprimirListaIngresos(listaPersonas, listaIngresos, cantidad, j, valor);
-        }}break;
+         //imprimirListaIngresos(listaIngresos, listaPersonas, cantidad, j, valor);
+        }break;
 
     case 5:
             horasEstadia=devolverHorasEstadia(horasEstadia);
-           j=imprimirListaIngresos(listaPersonas, listaIngresos, cantidad, j, valor);
+           j=imprimirListaIngresos(listaIngresos, listaPersonas, cantidad, j, valor);
 
            if (j == 0)
                 {
@@ -306,7 +210,7 @@ int main()
                             break;
                    }
                 recaudacionTotal=recaudacionTotal+j;
-                printf("-ID Propietario: %d\n-Nombre: %s\nPatente:\n- Tiempo de estadía: %d\n\n***El importe a abonar es de %d pesos***",listaPersonas[i].id, listaPersonas[i].nombre, listaIngresos[i].patente, j);
+                printf("\n-ID Propietario: %d\n-Nombre: %s\nPatente:\n- Tiempo de estadía: %d\n\n***El importe a abonar es de %d pesos***",listaPersonas[i].id, listaPersonas[i].nombre, listaIngresos[i].patente, j);
                 }
                 break;
     case 6:
@@ -354,7 +258,7 @@ int main()
         imprimirListaPropietarios(listaPersonas, cantidad, j, valor);
         break;
     case 97:
-        imprimirListaIngresos(listaPersonas, listaIngresos, cantidad, j, valor);
+        imprimirListaIngresos(listaIngresos, listaPersonas, cantidad, j, valor);
         break;
 
         }}

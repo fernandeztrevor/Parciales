@@ -3,6 +3,10 @@
 #include <conio.h>
 #include <float.h>
 #include "funciones.h"
+#define MARCA1  "ALPHA_ROMEO"
+#define MARCA2  "FERRARI"
+#define MARCA3  "AUDI"
+#define MARCA4  "OTROS"
 
 
 int devolverHorasEstadia()
@@ -104,9 +108,9 @@ int imprimirListaPropietarios(Propietarios listaPersonas[], int cantidad, int j,
                     {
                         if(j==0)
                         {
-                          printf("\nId      Nombre      Direccion      Tarjeta\n");
+                          printf("\nId                  Nombre          Direccion             Tarjeta\n");
                         }
-                        printf("%d.      %s      %s      %s\n", listaPersonas[i].id, listaPersonas[i].nombre, listaPersonas[i].direccion, listaPersonas[i].tarjeta);
+                        printf("%d.%20s%20s%20s\n", listaPersonas[i].id, listaPersonas[i].nombre, listaPersonas[i].direccion, listaPersonas[i].tarjeta);
                         j++;
                     }
                 }
@@ -114,12 +118,12 @@ int imprimirListaPropietarios(Propietarios listaPersonas[], int cantidad, int j,
     return j;
 }
 
-int imprimirListaIngresos(Propietarios listaPersonas[], Ingresos listaIngresos[], int cantidad, int j, int valor)
+int imprimirListaIngresos(Ingresos listaIngresos[], Propietarios listaPersonas[], int cantidad, int j, int valor)
 {
         int i;
         j=0;
 
-        for(i=0; i<cantidad; i++)
+        for(i=0; i<10; i++)
                     {
                         if(listaIngresos[i].id > valor)
                         {
@@ -127,14 +131,91 @@ int imprimirListaIngresos(Propietarios listaPersonas[], Ingresos listaIngresos[]
                                 {
                                   printf("\nId      Patente      Marca      ID Propietario\n");
                                 }
-                                printf("%d      %s      %s      %d\n", listaIngresos[i].id, listaIngresos[i].patente, listaIngresos[i].marca, listaPersonas[i].id);
-                                j++;
+
+                            printf("%4d%10s%10s%4d\n", listaIngresos[i].id, listaIngresos[i].patente, listaIngresos[i].marca, listaIngresos[i].propietario);
+                            j++;
                         }
                     }
+
 
         return j;
 }
 
+void hardcode(Propietarios listaPersonas[])
+{
+        /*for(int i=1; i<5; i++)
+    {
+        switch (i)
+            {
+               case 1:
+                   listaPersonas[i].id=i;
+                   strcpy(listaPersonas[i].nombre,"Juan");
+                   strcpy(listaPersonas[i].tarjeta,"111111");
+                   strcpy(listaPersonas[i].direccion,"Mitre");
+                   break;
+                case 2:
+                   listaPersonas[i].id = i;
+                   strcpy(listaPersonas[i].nombre,"Luis");
+                   strcpy(listaPersonas[i].tarjeta,"222222");
+                   strcpy(listaPersonas[i].direccion,"Urquiza");
+                   break;
+                case 3:
+                   listaPersonas[i].id=i;
+                   strcpy(listaPersonas[i].nombre,"Maria");
+                   strcpy(listaPersonas[i].tarjeta,"333333");
+                   strcpy(listaPersonas[i].direccion,"Belgrano");
+                   break;
+                case 4:
+                   listaPersonas[i].id=i;
+                   strcpy(listaPersonas[i].nombre,"Jose");
+                   strcpy(listaPersonas[i].tarjeta,"444444");
+                   strcpy(listaPersonas[i].direccion,"Alsina");
+                   break;
+            }
+    }*/
+    int id = {1,2,3,4};
+    char nombre[4][20] = {"Juan","Luis","Maria","Jose"};
+    char tarjeta[4][20] = {"111-111","222-222","333-333","444-444"};
+    char direccion[4][20] = {"mitre","urquiza","belgrano","alsina"};
 
+    for (int i=0; i<4; i++)
+    {
+        listaPersonas[i].id=i;
+        strcpy(listaPersonas[i].nombre,nombre[i]);
+        strcpy(listaPersonas[i].tarjeta,tarjeta[i]);
+        strcpy(listaPersonas[i].direccion,direccion[i]);
+    }
+    printf("\nCarga de personas OK");
+}
+
+void hardcodeIngresos(Ingresos listaIngresos[])
+{
+    int id[10] = {1,2,3,4,5,6,7,8,9,10};
+    char patente[20][10]= {"AAA","CCC","DDD","BBB","ZZZ","III","HHH","EEE","FFF","GGG"};
+    int marca[10]= {1,3,3,2,2,3,3,4,3,1};
+    int propietario[10]= {2,1,2,1,3,3,4,1,4,3};
+
+     for(int i=0; i<10; i++)
+    {
+        listaIngresos[i].id = id[i];
+        strcpy(listaIngresos[i].patente, patente[i]);
+        switch(marca[i])
+                        {case 1:
+                        listaIngresos[i].marca=MARCA1;
+                        break;
+                        case 2:
+                        listaIngresos[i].marca=MARCA2;
+                        break;
+                        case 3:
+                        listaIngresos[i].marca=MARCA3;
+                        break;
+                        case 4:
+                        listaIngresos[i].marca=MARCA4;
+                        break;}
+        listaIngresos[i].propietario = propietario[i];
+        //printf("%4d%10s%10s\n", listaIngresos[i].id, listaIngresos[i].patente, listaIngresos[i].marca);
+    }
+printf("\nCarga de ingresos OK");
+}
 
 
