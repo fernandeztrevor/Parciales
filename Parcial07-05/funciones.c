@@ -60,6 +60,19 @@ int obtenerEspacioLibre(Propietarios listaPersonas[], int cantidad, int valor)
     return -1;
 }
 
+int obtenerEspacioIngresos(Ingresos listaIngresos[], int cantidad, int valor)
+{
+    int i;
+    for (i=0; i<cantidad; i++)
+    {
+     if (listaIngresos[i].id == valor)
+     {
+         return i;
+     }
+    }
+    return -1;
+}
+
 int letras(char str[])
 {
     int i=0;
@@ -109,6 +122,7 @@ int imprimirListaPropietarios(Propietarios listaPersonas[], int cantidad, int j,
                         if(j==0)
                         {
                           printf("\nId                  Nombre          Direccion             Tarjeta\n");
+
                         }
                         printf("%d.%20s%20s%20s\n", listaPersonas[i].id, listaPersonas[i].nombre, listaPersonas[i].direccion, listaPersonas[i].tarjeta);
                         j++;
@@ -121,9 +135,11 @@ int imprimirListaPropietarios(Propietarios listaPersonas[], int cantidad, int j,
 int imprimirListaIngresos(Ingresos listaIngresos[], Propietarios listaPersonas[], int cantidad, int j, int valor)
 {
         int i;
+        int marca;
+
         j=0;
 
-        for(i=0; i<10; i++)
+        for(i=0; i<20; i++)
                     {
                         if(listaIngresos[i].id > valor)
                         {
@@ -131,8 +147,20 @@ int imprimirListaIngresos(Ingresos listaIngresos[], Propietarios listaPersonas[]
                                 {
                                   printf("\nId      Patente      Marca      ID Propietario\n");
                                 }
-
-                            printf("%4d%10s%10s%4d\n", listaIngresos[i].id, listaIngresos[i].patente, listaIngresos[i].marca, listaIngresos[i].propietario);
+                            switch(listaIngresos[i].marca)
+                                {case 1:
+                                marca=MARCA1;
+                                break;
+                                case 2:
+                                marca=MARCA2;
+                                break;
+                                case 3:
+                                marca=MARCA3;
+                                break;
+                                case 4:
+                                marca=MARCA4;
+                                break;}
+                            printf("%4d%10s%10s%4d\n", listaIngresos[i].id, listaIngresos[i].patente, marca , listaIngresos[i].propietario);//se enmascaró marca
                             j++;
                         }
                     }
@@ -173,14 +201,14 @@ void hardcode(Propietarios listaPersonas[])
                    break;
             }
     }*/
-    int id = {1,2,3,4};
+    int id[4] = {0,1,2,3};
     char nombre[4][20] = {"Juan","Luis","Maria","Jose"};
     char tarjeta[4][20] = {"111-111","222-222","333-333","444-444"};
     char direccion[4][20] = {"mitre","urquiza","belgrano","alsina"};
 
-    for (int i=0; i<4; i++)
+    for (int i = 0; i<4; i++)
     {
-        listaPersonas[i].id=i;
+        listaPersonas[i].id = id[i];
         strcpy(listaPersonas[i].nombre,nombre[i]);
         strcpy(listaPersonas[i].tarjeta,tarjeta[i]);
         strcpy(listaPersonas[i].direccion,direccion[i]);
@@ -190,16 +218,17 @@ void hardcode(Propietarios listaPersonas[])
 
 void hardcodeIngresos(Ingresos listaIngresos[])
 {
-    int id[10] = {1,2,3,4,5,6,7,8,9,10};
+    int id[10] = {0,1,2,3,4,5,6,7,8,9};
     char patente[20][10]= {"AAA","CCC","DDD","BBB","ZZZ","III","HHH","EEE","FFF","GGG"};
     int marca[10]= {1,3,3,2,2,3,3,4,3,1};
     int propietario[10]= {2,1,2,1,3,3,4,1,4,3};
 
-     for(int i=0; i<10; i++)
+     for(int i = 0; i<10; i++)
     {
         listaIngresos[i].id = id[i];
         strcpy(listaIngresos[i].patente, patente[i]);
-        switch(marca[i])
+        listaIngresos[i].marca = marca[i];
+        /*switch(marca[i])
                         {case 1:
                         listaIngresos[i].marca=MARCA1;
                         break;
@@ -211,7 +240,7 @@ void hardcodeIngresos(Ingresos listaIngresos[])
                         break;
                         case 4:
                         listaIngresos[i].marca=MARCA4;
-                        break;}
+                        break;}*/
         listaIngresos[i].propietario = propietario[i];
         //printf("%4d%10s%10s\n", listaIngresos[i].id, listaIngresos[i].patente, listaIngresos[i].marca);
     }

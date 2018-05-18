@@ -12,6 +12,7 @@
 #define MARCA3  "AUDI"
 #define MARCA4  "OTROS"
 
+
 int main()
 {
     int opcion=0;
@@ -122,7 +123,7 @@ int main()
                     listaPersonas[i].id=valor;
                 }break;
     case 4:
-        espacioLibre=obtenerEspacioLibre(listaIngresos, cantidad, valor);
+        espacioLibre=obtenerEspacioIngresos(listaIngresos, cantidad, valor);
         printf("%d", espacioLibre);
 
         if(espacioLibre == -1)
@@ -175,8 +176,9 @@ int main()
         }break;
 
     case 5:
-            horasEstadia=devolverHorasEstadia(horasEstadia);
-           j=imprimirListaIngresos(listaIngresos, listaPersonas, cantidad, j, valor);
+            horasEstadia = devolverHorasEstadia(horasEstadia);
+            printf("%d", horasEstadia);
+            j = imprimirListaIngresos(listaIngresos, listaPersonas, cantidad, j, valor);
 
            if (j == 0)
                 {
@@ -186,65 +188,99 @@ int main()
                 {
                    printf("\nIngrese el ID de ingreso:\n");
                    scanf("%d", &i);
-                   switch(i)
+                //printf("%s", listaIngresos[i].marca);
+                  /* if(listaIngresos[i].marca == MARCA1)
+                   {
+                       j = horasEstadia*150;
+                       printf("Usted ha estado %d hs y el precio a abonar es %d", horasEstadia, j);
+                       recaudacionMarca1 = recaudacionMarca1+j;
+                   }
+                   if(listaIngresos[i].marca == MARCA2)
+                   {
+                       j = horasEstadia*175;
+                       printf("Usted ha estado %d hs y el precio a abonar es %d", horasEstadia, j);
+                       recaudacionMarca2 = recaudacionMarca2+j;
+                   }
+                   if(listaIngresos[i].marca == MARCA3)
+                   {
+                      j = horasEstadia*200;
+                      printf("Usted ha estado %d hs y el precio a abonar es %d", horasEstadia, j);
+                      recaudacionMarca3 = recaudacionMarca3+j;
+                   }
+                   if(listaIngresos[i].marca == MARCA4)
+                   {
+                       j = horasEstadia*250;
+                       printf("Usted ha estado %d hs y el precio a abonar es %d", horasEstadia, j);
+                       recaudacionMarca4 = recaudacionMarca4+j;
+                   }*/
+
+
+                   switch(listaIngresos[i].marca)
                    {
                        case 1:
-                            j=horasEstadia*150;
-                            printf("Usted ha estado %d y el precio a abonar es %d", horasEstadia, j);
-                            recaudacionMarca1=recaudacionMarca1+j;
+                            j = horasEstadia*150;
+                            printf("Usted ha estado %d hs y el precio a abonar es %d", horasEstadia, j);
+                            recaudacionMarca1 = recaudacionMarca1+j;
                             break;
                        case 2:
-                            j=horasEstadia*175;
-                            printf("Usted ha estado %d y el precio a abonar es %d", horasEstadia, j);
-                            recaudacionMarca2=recaudacionMarca2+j;
+                            j = horasEstadia*175;
+                            printf("Usted ha estado %d hs y el precio a abonar es %d", horasEstadia, j);
+                            recaudacionMarca2 = recaudacionMarca2+j;
                             break;
                         case 3:
-                            j=horasEstadia*200;
-                            printf("Usted ha estado %d y el precio a abonar es %d", horasEstadia, j);
-                            recaudacionMarca3=recaudacionMarca3+j;
+                            j = horasEstadia*200;
+                            printf("Usted ha estado %d hs y el precio a abonar es %d", horasEstadia, j);
+                            recaudacionMarca3 = recaudacionMarca3+j;
                             break;
                         case 4:
-                            j=horasEstadia*250;
-                            printf("Usted ha estado %d y el precio a abonar es %d", horasEstadia, j);
-                            recaudacionMarca4=recaudacionMarca4+j;
+                            j = horasEstadia*250;
+                            printf("Usted ha estado %d hs y el precio a abonar es %d", horasEstadia, j);
+                            recaudacionMarca4 = recaudacionMarca4+j;
                             break;
                    }
-                recaudacionTotal=recaudacionTotal+j;
-                printf("\n-ID Propietario: %d\n-Nombre: %s\nPatente:\n- Tiempo de estadía: %d\n\n***El importe a abonar es de %d pesos***",listaPersonas[i].id, listaPersonas[i].nombre, listaIngresos[i].patente, j);
+
+                recaudacionTotal = recaudacionTotal+j;
+                printf("\n-ID Propietario: %d\n-Nombre: %s\n- Patente: %s\n- Tiempo de estadia: %dhs\n\n***El importe a abonar es de %d pesos***\n\n", listaIngresos[i].id, listaPersonas[i].nombre, listaIngresos[i].patente, horasEstadia, j);
+                listaIngresos[i].id = valor;
                 }
                 break;
     case 6:
         printf("\nLa recaudacion hasta el momento es de %d Pesos\n", recaudacionTotal);
         break;
-
     case 7:
         printf("\nA continuacion se detalla la recaudacion por marca hasta el momento:\n\n1.ALPHA_ROMEO: $%d.\n2.FERRARI: $%d.\n3.AUDI: $%d.\n4.OTROS: $%d.\n", recaudacionMarca1, recaudacionMarca2, recaudacionMarca3, recaudacionMarca4);
-
+        break;
     case 8:
         printf("Ingrese el ID del usuario que desea buscar: ");
         scanf("%d", &j);
-        k=0;
+        k = 0;
         for(i=0; i<20; i++)
         {
             if(j == listaPersonas[i].id)
             {
               printf("\nID: %d.\nNombre: %s.\nTarjeta: %s.\nDireccion: %s.\n",listaPersonas[i].id, listaPersonas[i].nombre, listaPersonas[i].tarjeta, listaPersonas[i].direccion);
-              k=1;
+              k = 1;
             }
         }
-        if(k==0)
+        if(k == 0)
             {
                 printf("\nNo se encontraron usuarios para ese ID.\n");
             }
         break;
 
     case 9:
-        k=0;
+        k = 0;
         for(i=0; i<20; i++)
         {
-            if(MARCA3 == listaIngresos[i].marca)
+            if(listaIngresos[i].marca == 3)
             {
-              printf("\nLos propietarios de autos AUDI son:\nID: %d.\nNombre: %s.\n",listaPersonas[i].id, listaPersonas[i].nombre);
+              for(j=0; j<4; j++)
+              {
+                  if (listaPersonas[j].id == listaIngresos[i].propietario)
+                  {
+                   printf("\n\nID: %d.\nNombre: %s.\nPatente: %s.\n",listaIngresos[i].propietario, listaPersonas[j].nombre, listaIngresos[i].patente);
+                  }
+              }
               k=1;
             }
         }
