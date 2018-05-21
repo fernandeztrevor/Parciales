@@ -160,7 +160,7 @@ int imprimirListaIngresos(Ingresos listaIngresos[], Propietarios listaPersonas[]
                                 case 4:
                                 marca=MARCA4;
                                 break;}
-                            printf("%4d%10s%10s%4d\n", listaIngresos[i].id, listaIngresos[i].patente, marca , listaIngresos[i].propietario);//se enmascaró marca
+                            printf("%4d %10s %10s %4d\n", listaIngresos[i].id, listaIngresos[i].patente, marca , listaIngresos[i].propietario);//se enmascaró marca
                             j++;
                         }
                     }
@@ -213,7 +213,7 @@ void hardcode(Propietarios listaPersonas[])
         strcpy(listaPersonas[i].tarjeta,tarjeta[i]);
         strcpy(listaPersonas[i].direccion,direccion[i]);
     }
-    printf("\nCarga de personas OK");
+    //printf("\nCarga de personas OK");
 }
 
 void hardcodeIngresos(Ingresos listaIngresos[])
@@ -244,7 +244,19 @@ void hardcodeIngresos(Ingresos listaIngresos[])
         listaIngresos[i].propietario = propietario[i];
         //printf("%4d%10s%10s\n", listaIngresos[i].id, listaIngresos[i].patente, listaIngresos[i].marca);
     }
-printf("\nCarga de ingresos OK");
+//printf("\nCarga de ingresos OK");
 }
 
+void hardcodeEgresos(Egresos listaEgresos[])
+{
+    int marca[]= {1,1,2,3,2,2,3,4,1,1};
+    float importe[]= {100,200,100,300,100,100,200,200,100,100};
+
+    for(int i = 0; i<10; i++)
+    {
+        listaEgresos[i].marca = marca[i];
+        listaEgresos[i].importe = importe[i];
+    }
+
+}
 

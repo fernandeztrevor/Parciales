@@ -1,19 +1,20 @@
 # depslib dependency file v1.0
-1525701901 source:c:\test\parcial07-05\funciones.c
+1526905485 source:c:\test\parcial07-05\funciones.c
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
 	<float.h>
 	"funciones.h"
 
-1525695562 c:\test\parcial07-05\funciones.h
+1526905905 c:\test\parcial07-05\funciones.h
 
-1525701320 source:c:\test\parcial07-05\main.c
+1526908508 source:c:\test\parcial07-05\main.c
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
 	<float.h>
 	<time.h>
+	<string.h>
 	"funciones.h"
 
 1526674680 source:c:\users\tfernandez_mecon\desktop\parcial07-05\main.c

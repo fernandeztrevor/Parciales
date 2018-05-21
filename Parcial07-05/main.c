@@ -33,11 +33,38 @@ int main()
 
     Propietarios listaPersonas[cantidad];
     Ingresos listaIngresos[30];
+    Egresos listaEgresos[30];
 
     inicializar(listaPersonas, cantidad, valor);
     inicializarIngresos(listaIngresos, cantidad, valor);
     hardcode(listaPersonas);
     hardcodeIngresos(listaIngresos);
+    hardcodeEgresos(listaEgresos);
+
+    for(i=0;  i<10; i++)
+    {
+        if (listaEgresos[i].marca==1)
+        {
+            recaudacionTotal=recaudacionTotal+recaudacionMarca1;
+            recaudacionMarca1=recaudacionMarca1+listaEgresos[i].importe;
+
+        }
+        if (listaEgresos[i].marca==2)
+        {
+            recaudacionTotal=recaudacionTotal+recaudacionMarca1;
+            recaudacionMarca2=recaudacionMarca2+listaEgresos[i].importe;
+        }
+        if (listaEgresos[i].marca==3)
+        {
+            recaudacionTotal=recaudacionTotal+recaudacionMarca1;
+            recaudacionMarca3=recaudacionMarca3+listaEgresos[i].importe;
+        }
+        if (listaEgresos[i].marca==4)
+        {
+            recaudacionTotal=recaudacionTotal+recaudacionMarca1;
+            recaudacionMarca4=recaudacionMarca4+listaEgresos[i].importe;
+        }
+    }
 
     do
     {
@@ -84,7 +111,6 @@ int main()
                         strcpy(listaPersonas[espacioLibre].nombre,auxiliarNombre);
                         strcpy(listaPersonas[espacioLibre].direccion,auxiliarDireccion);
                         strcpy(listaPersonas[espacioLibre].tarjeta,auxiliarTarjeta);
-
         break;
 
     case 2:
@@ -107,7 +133,20 @@ int main()
                             printf("El numero de tarjeta solo puede estar compuesto por numeros, reingrese:\n");
                             gets(auxiliarTarjeta);
                         }
-                        strcpy(listaPersonas[i].tarjeta,auxiliarTarjeta);
+                printf("\n\nPara confirmar la operacion presione 1, para cancelar 2.\n");
+                scanf("%d", &j);
+                if(j == '1')
+                {
+                  strcpy(listaPersonas[i].tarjeta,auxiliarTarjeta);
+                  printf("\nUsuario modificado\n");
+                }
+                else
+                {
+                    printf("\nOPERACION CANCELADA\N");
+                }
+
+
+
                 }break;
 
     case 3:
@@ -120,7 +159,18 @@ int main()
                 {
                     printf("\nSeleccione el ID que desea dar de baja: ");
                     scanf("%d", &i);
-                    listaPersonas[i].id=valor;
+                    printf("\nPara confirmar la operacion presione 1, para cancelar 2.\n");
+                scanf("%d", &j);
+                if(j == 1)
+                {
+                  listaPersonas[i].id=valor;
+                  printf("\nUsuario Borrado\n");
+                }
+                else
+                {
+                    printf("\nOPERACION CANCELADA\N");
+                }
+
                 }break;
     case 4:
         espacioLibre=obtenerEspacioIngresos(listaIngresos, cantidad, valor);
