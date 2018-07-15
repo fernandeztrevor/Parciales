@@ -73,6 +73,9 @@ int main()
                 system("cls");
 
             break;
+    case 4:
+        Employee_salary_save(auxList);
+        break;
 
      case 9:
             eleccion=9;

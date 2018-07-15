@@ -28,6 +28,7 @@ int parseEmployee(FILE* pFile, ArrayList* list)
     }
 
     }
+    fclose(pFile);
 }
 
 int compareEmployee(void* pEmployeeA,void* pEmployeeB)
@@ -54,6 +55,25 @@ void printEmployee(Employee* p)
 void printEmployeeSalary(Employee* p)
 {
     printf("ID:%d\nNombre:%s\nDireccion:%s\nHoras: %d\nSueldo: %d\r\n\n",Employee_getId(p),Employee_getNombre(p),Employee_getDireccion(p), Employee_getHoras(p), Employee_getSueldo(p));
+}
+
+int Employee_salary_save(ArrayList* this)
+{
+    int aux = -1;
+    FILE* pFile;
+    pFile = fopen("./sueldos.csv","w");
+
+    if(pFile != NULL)
+    {
+    int tam=al_len(this);
+    fprintf(pFile, "ID,Nombre,Direccion,Horas,Sueldo\n");
+    for(int i=0; i<tam; i++)
+    {
+        Employee* tmp = (Employee*)this->get(this,i);
+        fprintf(pFile, "%d,%s,%s,%d,%d\n", Employee_getId(tmp), Employee_getNombre(tmp), Employee_getDireccion(tmp), Employee_getHoras(tmp), Employee_getSueldo(tmp));
+    }
+    }
+    fclose(pFile);
 }
 
 /** \brief Set this employee the values recived as parameters
