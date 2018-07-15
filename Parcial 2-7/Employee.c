@@ -15,13 +15,15 @@ int parseEmployee(FILE* pFile, ArrayList* list)
     char* id=(char *)malloc(sizeof(char)*51);
     char* nombre=(char *)malloc(sizeof(char)*51);
     char* direccion=(char *)malloc(sizeof(char)*51);
+    char* horas=(char *)malloc(sizeof(char)*51);
     while(!feof(pFile))
     {
-    fscanf(pFile,"%[^,],%[^,],%[^\n]", id, nombre, direccion);
+    fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]", id, nombre, direccion, horas);
     Employee *tmp = newEmployee();
     Employee_setId(tmp, atoi(id));
     Employee_setNombre(tmp, nombre);
     Employee_setDireccion(tmp, direccion);
+    Employee_setHoras(tmp, atoi(horas));
     list->add(list, tmp);
     }
 
@@ -46,7 +48,12 @@ int compareEmployee(void* pEmployeeA,void* pEmployeeB)
 
 void printEmployee(Employee* p)
 {
-    printf("ID:%d Nombre:%s Direccion:%s\r\n",Employee_getId(p),Employee_getNombre(p),Employee_getDireccion(p));
+    printf("ID:%d Nombre:%s Direccion:%s Horas: %d\r\n",Employee_getId(p),Employee_getNombre(p),Employee_getDireccion(p), Employee_getHoras(p));
+}
+
+void printEmployeeSalary(Employee* p)
+{
+    printf("ID:%d\nNombre:%s\nDireccion:%s\nHoras: %d\nSueldo: %d\r\n\n",Employee_getId(p),Employee_getNombre(p),Employee_getDireccion(p), Employee_getHoras(p), Employee_getSueldo(p));
 }
 
 /** \brief Set this employee the values recived as parameters
@@ -76,6 +83,39 @@ Employee* newEmployee(void)//(int id, char nombre[],char direccion[])
     return returnAux;
 
 }
+int Employee_salary(Employee* this)
+{
+    int salary;
+    Employee* aux = (Employee*) this;
+    int horas = Employee_getHoras(this);
+
+    if(aux =! NULL)
+    {
+
+        if(horas< 120)
+        {
+           salary = horas*180;
+           //Employee_setSalary(aux, salary);
+           Employee_setSueldo(this, salary);
+        }
+        if(horas >= 120 && horas < 160)
+        {
+            salary = (horas-120)*240 + 120*180;
+            //printf("ok");
+            //Employee_setSalary(aux, salary);
+            Employee_setSueldo(this, salary);
+        }
+        if (horas >= 160)
+        {
+            salary = (horas-160)*350 + (horas-120)*240 + 120*180;
+            //Employee_setSalary(aux, salary);
+            Employee_setSueldo(this, salary);
+        }
+    }
+
+
+    return salary;
+}
 
 int Employee_setId(Employee* this, int id)
 {
@@ -100,4 +140,20 @@ char* Employee_setDireccion(Employee* this, char* direccion)
 char* Employee_getDireccion(Employee* this)
 {
     return this->direccion;
+}
+int Employee_setHoras(Employee* this, int horas)
+{
+    this->horas = horas;
+}
+int Employee_getHoras(Employee* this)
+{
+    return this->horas;
+}
+int Employee_setSueldo(Employee* this, int sueldo)
+{
+    this->sueldo = sueldo;
+}
+int Employee_getSueldo(Employee* this)
+{
+    return this->sueldo;
 }

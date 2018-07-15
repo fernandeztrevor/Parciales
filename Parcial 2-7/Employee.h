@@ -22,14 +22,14 @@ struct
     int id;
     char nombre[51];
     char direccion[51];
-    //float salary;
-    //int sector;
-    //int isEmpty;
+    int horas;
+    int sueldo;
 
 }typedef Employee;
 #endif // __EMPLOYEE
 
 int compareEmployee(void* pEmployeeA,void* pEmployeeB);
+int Employee_salary(Employee*);
 void printEmployee(Employee* p);
 Employee* newEmployee(void);//(int id, char nombre[],char direccion[]);
 int Employee_setId(Employee*, int);

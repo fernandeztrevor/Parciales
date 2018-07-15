@@ -40,6 +40,7 @@ struct ArrayList{
     struct ArrayList* (* clone)();
     struct ArrayList* (*subList)();
     int     (*deleteArrayList)();
+    int     (*map)();
 
 }typedef ArrayList;
 #endif
@@ -237,3 +238,6 @@ int resizeUp(ArrayList* this);
 int expand(ArrayList* this,int index);
 int contract(ArrayList* this,int index);
 //___________________
+
+
+int al_map(ArrayList* this, int (*pFunc)(void*));

@@ -268,12 +268,12 @@ ArrayList* al_clone(ArrayList* this)
     if(this != NULL)
     {
        returnAux=al_newArrayList();
-       tam=al_len(this);
-       for(i=0; i>tam; i++)
+       tam=this->len(this);
+       for(i=0; i<tam; i++)
        {
            //al_add(returnAux,this->pElements);
            //al_add(returnAux, al_get(this, i));
-           returnAux->add(returnAux, returnAux->get(this, i));
+           returnAux->add(returnAux, this->get(this, i));
        }
     }
 
@@ -527,13 +527,18 @@ int al_sort(ArrayList* this, int (*pFunc)(void* ,void*), int order)
         }
     }
     }*/
-    if(this != NULL && pFunc != NULL){
-        if(order==0 || order==1){
+    if(this != NULL && pFunc != NULL)
+    {
+        if(order==0 || order==1)
+        {
             tam=this->len(this);
-            for(i=0;i<tam;i++){
-                for(j=i+1;j<tam;j++){
+            for(i=0;i<tam;i++)
+            {
+                for(j=i+1;j<tam;j++)
+                {
                     res=pFunc(this->get(this,i),this->get(this,j));
-                    if((res==1 && order==1) || (res==-1 && order==0)){
+                    if((res==1 && order==1) || (res==-1 && order==0))
+                    {
                         void * pElementAux1=this->get(this,i);
                         void * pElementAux2=this->get(this,j);
                         this->set(this,j,pElementAux1);
@@ -624,4 +629,27 @@ int contract(ArrayList* this,int index)
     int returnAux = -1;
 
     return returnAux;
+}
+
+int al_map(ArrayList* this, int (*pFunc)(void*))
+{
+int retorno = -1;
+
+if(this != NULL && pFunc != NULL)
+    {
+    int tam=this->len(this);
+
+    for(int i=0; i<tam; i++)
+        {
+            /*int sal;
+
+            sal=pFunc(this->get(this,i));
+
+            Employee_setSueldo(this, sal);*/
+
+            pFunc(this->get(this,i));
+        }
+        retorno=0;
+    }
+    return retorno;
 }
