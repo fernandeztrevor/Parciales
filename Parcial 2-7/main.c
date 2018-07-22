@@ -21,6 +21,7 @@ int main()
         switch(eleccion)
         {
     case 1:
+        printf("%d", tam);
         for(i=0; i < tam; i++)
             {
                 printEmployee((Employee*)auxList->get(auxList, i));

@@ -16,6 +16,7 @@ int parseEmployee(FILE* pFile, ArrayList* list)
     char* nombre=(char *)malloc(sizeof(char)*51);
     char* direccion=(char *)malloc(sizeof(char)*51);
     char* horas=(char *)malloc(sizeof(char)*51);
+    //fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]", id, nombre, direccion, horas);
     while(!feof(pFile))
     {
     fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]", id, nombre, direccion, horas);
