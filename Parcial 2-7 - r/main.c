@@ -81,19 +81,19 @@ int main()
 
     case 5:
 
+        if(filterList != NULL)
+        {
         filterList = al_clone(auxList);
-
-        al_filter(filterList, al_mayor);
-
-        /*auxListMayor = al_clone(auxList);
-        al_map(auxList, Employee_salary);
-        al_mayor(auxListMayor, Employee_salary);*/
+        al_filter(auxList, filterList, Employee_mayor);
 
         int tam = al_len(filterList);
+        printf("%d", tam);
             for(i=0; i < tam; i++)
             {
                 printEmployeeSalary((Employee*)filterList->get(filterList, i));
             }
+        }
+
                 printf("\n");
                 system("pause");
                 system("cls");

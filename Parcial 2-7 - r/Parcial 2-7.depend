@@ -61,3 +61,34 @@
 	"ArrayList.h"
 	"Employee.h"
 
+1532268440 source:c:\test\parciales-master\parcial 2-7 - r\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	"ArrayList.h"
+	"Employee.h"
+
+1532351599 c:\test\parciales-master\parcial 2-7 - r\arraylist.h
+
+1532354698 c:\test\parciales-master\parcial 2-7 - r\employee.h
+
+1532356432 source:c:\test\parciales-master\parcial 2-7 - r\arraylist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+	"Employee.h"
+
+1532356330 source:c:\test\parciales-master\parcial 2-7 - r\employee.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+	"Employee.h"
+
+1532356406 source:c:\test\parciales-master\parcial 2-7 - r\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+	"Employee.h"
+

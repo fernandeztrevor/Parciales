@@ -157,6 +157,22 @@ int Employee_salary(Employee* this)
     return salary;
 }
 
+int Employee_mayor(ArrayList* this, int (*pFunc)(void*), int index)
+{
+    int retorno=-1;
+
+    if(this != NULL && pFunc != NULL)
+    {
+        //printf("!");
+           if( Employee_salary(this) < 20000)
+            {
+                retorno = 1;
+            }
+    //printf("!");
+    }
+    return retorno;
+}
+
 int Employee_setId(Employee* this, int id)
 {
     this->id = id;

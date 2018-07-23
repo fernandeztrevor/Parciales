@@ -653,42 +653,30 @@ if(this != NULL && pFunc != NULL)
     }
     return retorno;
 }
-int al_mayor(ArrayList* this, int (*pFunc)(void*), int index)
+
+
+void al_filter(ArrayList* this, ArrayList* this2, int (*pFunc)(void*))
 {
-    int retorno=-1;
+    //int retorno = -1;
 
-    if(this != NULL && pFunc != NULL)
-    {
-           if( Employee_salary(this) < 20000)
-            {
-                retorno = 1;
-            }
-    //printf("!");
-    }
-    return retorno;
-}
 
-int al_filter(ArrayList* this, int (*pFunc)(void*))
-{
-    int retorno = -1;
 
-    if(this != NULL && pFunc != NULL)
+    if(this != NULL && pFunc != NULL && this2 != NULL)
     {
 
     int tam = this->len(this);
 
     for(int i=0; i<tam; i++)
         {
-        printf("!");
+
             if( pFunc(this->get(this,i)) == 1)
             {
-                al_remove(this, i);
+                al_remove(this2, i);
             }
-
 
         }
 
-        retorno=0;
+        //retorno=0;
     }
-    return retorno;
+    //return retorno;
 }

@@ -38,4 +38,5 @@ char *Employee_setNombre(Employee*, char*);
 char *Employee_getNombre(Employee*);
 char *Employee_setDireccion(Employee*, char*);
 char *Employee_getDireccion(Employee*);
+int Employee_mayor(ArrayList* this, int (*pFunc)(void*), int index);
 
